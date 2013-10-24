@@ -1,0 +1,61 @@
+﻿@{
+    ViewBag.Title = "Trade If OK";
+}
+@Scripts.Render("~/bundles/jquery")
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var today = new Date();
+            var hour = today.getHours();
+
+            var src = "";
+            var message = "";
+            
+            if(hour >= 0 && hour < 12) {
+                src = "@ViewBag.MorningImage";
+                message = "Good Morning";
+            } 
+            else if (hour == 12) {
+                src = "@ViewBag.NoonImage";
+                message = "Good Morning";
+            } 
+            else if (hour > 12 && hour < 18){
+                src = "@ViewBag.EveningImage";
+                message = "Good Afternoon";
+            }
+            else{
+                src = "@ViewBag.NightImage";
+                message = "Good Evening";
+            }
+
+            $("#displayImage").attr("src", src);
+            $("#greeting").text(message + ' dear guest!');
+        });        
+</script> 
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <div class="float-left" >
+                     <img src="@ViewBag.UnderConstruction" height="100px" width="100px"/>
+                </div>
+            </hgroup>
+            <p>
+            </p>
+            <div align="center">
+                <div>
+                    <label id="greeting"></label>
+                </div>
+                <div>
+                    <a href="">
+                        <img id="displayImage" src="" alt="image" /></a>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+<h3></h3>
+
